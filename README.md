@@ -1,24 +1,21 @@
-Command:
+# Command
 
-```make``` and run ```./Register```
+1. ```make``` 
+2. ```./Register```
 
 
-Index:
-1. Elementary data types
-2. Doubly-linked list design
-3. Hash table design
-4. Database management
+# Implementation Details
 
-1. Elementary data types
+## 1. Elementary data types
 
-(I)Basic data
+### Basic data
 Students, course and course selection data is defined to make the whole programme working.
 All of them contains exact the same attributes as required. Also, index class is also
 implemented. Index class has a key regarding to its sorting critiria (i.e ID for student
 index and code for course index). Each of them points to the course selection data. Thus 
 every course selection data is pointed by a student index and a course index.
 
-(II)Operator<
+### Operator<
 To make the insertion and searching function works more smoothly, for each basic class,
 operator< is overloaded. For students, it is determined by the 8-digit numeric ID 
 string, compaing its number digit by digit. For course, the value is determined by
@@ -29,9 +26,9 @@ the order of the code. For the index, it is compared by the key first (ID for st
 and code for course), and then compare the complementary key of the course selection 
 data it points to(code for student and ID for course).
 
-2. Doubly-linked list design
+## 2. Doubly-linked list design
 
-(I)Insertion and deletion
+### Insertion and deletion
 In this project, I have implmented a linked list for data storage. For convenience, 
 I chose to design a circular doubly-linked list whcih has a dummy node as its pivot,
 so therefore all the data can be inserted based on it. Also, tmeplate is used so that
@@ -47,7 +44,7 @@ function is efficient, I overloaded a function which can directly delete the dat
 providing the address of the target node with the exact data. Details can be found in the
 comment of the code.
 
-(II)find
+### find
 The find function is basically implmented with brute force. We compare the input key to 
 all the node in the list, and return the address of the node if found; otherwise, we return
 the address of the dummy node. So you may see a lot of use of the dummy node in my code. 
@@ -58,14 +55,14 @@ find the exact index with a ID and the exact course enrolled by the student, use
 to input the ID and Code as two keys, and the find() can return a index pointing to the 
 very course selection data.
 
-(III)initialize
+### initialize
 For the load function, we have to clean all existing data. Thus an initialize() is provide 
 to remove all existing data and turn the whole list back to the very beginning status (i.e
 only a dummy node exists). This function is also called in the destructor.
 
-3. Hash table
+# 3. Hash table
 
-(I)Hash function
+### Hash function
 The hash function is implemented with the buckets and base provided by the project description.
 Each bucket is a doubly-linked list(see 2.), so it is a array of a doubly-linked list.
 To get the exact bucket with a key, hash function is implemented and the serch can be easier. 
@@ -73,16 +70,16 @@ To prevent overflow from happening, I chose to adopt long int data type for calc
 Also, before the adding of the result calculated with the key character, the temporary
 sum is moded by the number of bucket.
 
-(II)Insertion and deletion
+### nsertion and deletion
 Not surprising. It is simply done by insert a object into the #index of the list.
 
-(III)Clear
+### Clear
 Initialize the table for file loading. It is simply the combination of for loop and the 
 initialize function in doubly-linked list as mentioned above.
 
-4. Database management
+# Database management
 
-(I)Deletion of student data or course data
+### Deletion of student data or course data
 When deleting these two data types, registration and two index databases are also passes
 for the synchronization of the data. When a student data is deleted, all registration data
 about the student is also deleted. However, when a course is about to be deleted, the 
@@ -90,7 +87,7 @@ function will check whether there is an existing registration data of the course
 index table directly (much faster!). If any student is enrolled, the course can never be 
 delete.
 
-(II)HTML
+### HTML
 The output of student and course HTML data simply uses a new doubly-linked list to store
 the hashtable data since the hashtable manages the data somehow "randomly". By making a
 copy of all existing data in the hash table, when inserting them into a temporary lsit, 
@@ -100,5 +97,5 @@ former one we serach all existing data with Student index so that as soon as a d
 found, it can be printed out directly since it is already sorted. Similarly, the latter
 one does the same thing.
 
-(II)FIle IO
+### FIle IO
 Self-define format of file io is used. Details can be found in the code.
