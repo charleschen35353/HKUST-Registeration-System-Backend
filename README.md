@@ -1,8 +1,13 @@
 # Command
 
-1. ```make``` 
-2. ```./Register```
+1. Run ```make``` 
+2. Run ```./Register```
 
+# Usage 
+
+You will see the following and simply follow the instructions.
+
+![alt text](./Demo.png)
 
 # Implementation Details
 
